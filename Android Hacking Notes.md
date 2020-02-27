@@ -1,5 +1,5 @@
-*grep for "HostnameVerifier", "X509TrustManager"
-*grep for "setJavaScriptEnabled" , "WebView" , "loadUrl", "onReceivedSslError"
+-grep for "HostnameVerifier", "X509TrustManager"
+- grep for "setJavaScriptEnabled" , "WebView" , "loadUrl", "onReceivedSslError"
 *grep for "Runtime.getRuntime().exec"
 *grep for "DocumentBuilder", "XMLReader", "SAXParser", "XMLStreamReader"
 *grep for "System.loadLibrary", "System.load", "DexClassLoader"
