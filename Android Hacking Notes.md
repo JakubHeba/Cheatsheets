@@ -1,21 +1,21 @@
-grep for "HostnameVerifier", "X509TrustManager"
-grep for "setJavaScriptEnabled" , "WebView" , "loadUrl", "onReceivedSslError"
-grep for "Runtime.getRuntime().exec"
-grep for "DocumentBuilder", "XMLReader", "SAXParser", "XMLStreamReader"
-grep for "System.loadLibrary", "System.load", "DexClassLoader"
-grep for "Cipher.getInstance", "getInstance", "NoPadding", "NullCipher()", "AES/CBC/PKCS5Padding", "DES/CBC"
-grep for "getExternalStoragePublicDirectory"
+*grep for "HostnameVerifier", "X509TrustManager"
+*grep for "setJavaScriptEnabled" , "WebView" , "loadUrl", "onReceivedSslError"
+*grep for "Runtime.getRuntime().exec"
+*grep for "DocumentBuilder", "XMLReader", "SAXParser", "XMLStreamReader"
+*grep for "System.loadLibrary", "System.load", "DexClassLoader"
+*grep for "Cipher.getInstance", "getInstance", "NoPadding", "NullCipher()", "AES/CBC/PKCS5Padding", "DES/CBC"
+*grep for "getExternalStoragePublicDirectory"
 
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-Get a screenshot:
+**Get a screenshot:
 
 ```adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > screen.png```
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-Creating an URL Handler Scheme:
+**Creating an URL Handler Scheme:
 
 ```<activity android:name=".MyUriActivity">
     <intent-filter>
@@ -24,88 +24,64 @@ Creating an URL Handler Scheme:
         <category android:name="android.intent.category.BROWSABLE" />
         <data android:scheme="myapp" android:host="path" />
     </intent-filter>
-</activity>```
+</activity>
+```
 
 
-The <data> element defines the scheme myapp;
-
-It requires an action;
-
-It requires at least one category;
-
-It BROWSABLE is defined, it means it can be triggered through the browser;
-
-
-
-
+*The <data> element defines the scheme myapp;
+*It requires an action;
+*It requires at least one category;
+*It BROWSABLE is defined, it means it can be triggered through the browser;
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+**Get the current SDK version:
 
-
-Get the current SDK version:
-
-
-
-$ adb shell grep ro.build.version.sdk= system/build.prop
+```$ adb shell grep ro.build.version.sdk= system/build.prop
 ro.build.version.sdk=25
+```
+
+**Extract Manifest and Data from the apk:
+
+- aapt -> Android Asset Packaging Tool
+
+*aapt l -a app.apk
+*apktool d test.apk // decompile
+*apktool b test // compile
+
+**ADB CheatSheet:
+
+*adb devices -> list devices
+*adb -s <device> command -> execute command over a specific device
+*adb connect ip:port -> connect to that device
+*adb install path-to-apk
+*adb push /path/to/local/file /path/on/android/device
+*adb pull /path/on/android/device /path/to/local/file
+*adb shell
+*adb shell <command>
+*adb forward tcp:<local_port> tcp:<device_port> //Forward a TCP port on the local host to a port on the device
+*adb forward tcp:8083 localabstract:appsocket // Forward TCP port to a local unix socket in the phone
+*adb logcat // View the device logs
 
 
-
-
-Extract Manifest and Data from the apk:
-
-
-
-aapt -> Android Asset Packaging Tool
-
-
-
-+] aapt l -a app.apk
-
-+] apktool d test.apk // decompile
-+] apktool b test // compile
-
-
-ADB CheatSheet:
-
-
-
-+] adb devices -> list devices
-+] adb -s <device> command -> execute command over a specific device
-+] adb connect ip:port -> connect to that device
-+] adb install path-to-apk
-+] adb push /path/to/local/file /path/on/android/device
-+] adb pull /path/on/android/device /path/to/local/file
-+] adb shell
-+] adb shell <command>
-+] adb forward tcp:<local_port> tcp:<device_port> //Forward a TCP port on the local host to a port on the device
-+] adb forward tcp:8083 localabstract:appsocket // Forward TCP port to a local unix socket in the phone
-+] adb logcat // View the device logs
-
-
-
-
-shell@android:/ $ pm list packages -> ask the package manager to list all the installed packages
+```shell@android:/ $ pm list packages -> ask the package manager to list all the installed packages
 shell@android:/ $ pm path <package_name> -> Find the stored APK path of an installed application
 shell@android:/ $ pm install /path/to/apk
 shell@android:/ $ pm uninstall <package_name>
 shell@android:/ $ pm disable <package_name>
+```
 
-
-
-
-logcat is a privileged tool that allows you to view system and application logs with flexible filters.
-shell@android:/ $ logcat
+*logcat is a privileged tool that allows you to view system and application logs with flexible filters.
+```shell@android:/ $ logcat
 shell@android:/ $ logcat -s tag -> If you know the name of the tag you are looking for
-
+```
 
 ---------------
 
-shell@android:/ $ getprop -> get system properties
+```shell@android:/ $ getprop -> get system properties
 shell@android:/ $ dumpsys -> dump status of all system information and services 
 shell@android:/ $ service list
-
+```
 
 
 
