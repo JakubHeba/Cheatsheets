@@ -1,5 +1,5 @@
 # AWS
-- from http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories
+~ from http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories
 
 http://169.254.169.254/latest/user-data
 http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME]
