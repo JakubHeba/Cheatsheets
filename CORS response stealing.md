@@ -1,5 +1,5 @@
-{ENDPOINT} - Vulnerable endpoint
-{My_Server} - Collaborator listener
+- {ENDPOINT} - Vulnerable endpoint
+- {My_Server} - Collaborator listener
 
 ```html
 <html>
