@@ -35,7 +35,7 @@
 - It requires at least one category;
 - It BROWSABLE is defined, it means it can be triggered through the browser;
 
-//////////////////////////////////////////////////////////////////////////////////////
+----
 
 <b>Get the current SDK version:</b>
 
@@ -257,8 +257,8 @@ The comparison is done using a literal check. You can find the original form of 
                        writePermission="com.mwr.example.sieve.WRITE_KEYS" 
                        path="/Keys"> 
       </path-permission> 
- </provider> 
- ```   
+</provider> 
+```   
 On the <path-permission> tag, the path attribute was used. The definition of the path attribute is as follows from http://developer.android.com/guide/topics/manifest/path-permission-element.html:
 
 A complete URI path for a subset of content provider data. Permission can be granted only to the particular data identified by this path...
