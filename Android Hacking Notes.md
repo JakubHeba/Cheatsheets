@@ -1,5 +1,5 @@
 <h1> Android Hacking Notes </h>
-<h1></
+
 - grep for "HostnameVerifier", "X509TrustManager"
 - grep for "setJavaScriptEnabled" , "WebView" , "loadUrl", "onReceivedSslError"
 - grep for "Runtime.getRuntime().exec"
