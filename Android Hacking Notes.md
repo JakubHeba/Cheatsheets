@@ -1,3 +1,5 @@
+<h1> Android Hacking Notes </h>
+<h1></
 - grep for "HostnameVerifier", "X509TrustManager"
 - grep for "setJavaScriptEnabled" , "WebView" , "loadUrl", "onReceivedSslError"
 - grep for "Runtime.getRuntime().exec"
@@ -7,13 +9,12 @@
 - grep for "getExternalStoragePublicDirectory"
 
 
-//////////////////////////////////////////////////////////////////////////////////////
-
+-----
 <b>Get a screenshot:</b>
 
 ```adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > screen.png```
 
-//////////////////////////////////////////////////////////////////////////////////////
+-----
 
 <b>Creating an URL Handler Scheme:</b>
 
