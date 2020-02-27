@@ -1,6 +1,6 @@
 
 `{ENDPOINT}` - Vulnerable endpoint address<br>
-`{MyServer}` - Collaborator/Listener address
+`{My_Server}` - Collaborator/Listener address
 
 ```html
 <html>
