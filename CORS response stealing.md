@@ -1,5 +1,7 @@
-- {ENDPOINT} - Vulnerable endpoint
-- {My_Server} - Collaborator listener
+| For Change | Description |
+| --- | --- |
+| {ENDPOINT} | Vulnerable endpoint address |
+| {MyServer} | Collaborator address |
 
 ```html
 <html>
