@@ -17,7 +17,7 @@ From http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.ht
 - http://169.254.169.254/latest/meta-data/public-keys/
 
 # Google Cloud
-https://cloud.google.com/compute/docs/metadata
+https://cloud.google.com/compute/docs/metadata<br>
 Requires the header "Metadata-Flavor: Google" or "X-Google-Metadata-Request: True"
 
 - http://169.254.169.254/computeMetadata/v1/
@@ -51,12 +51,12 @@ https://developers.digitalocean.com/documentation/metadata/
 - https://metadata.packet.net/userdata
 
 # Azure
-Limited, maybe more exist?
+Limited, maybe more exist?<br>
 https://azure.microsoft.com/en-us/blog/what-just-happened-to-my-vm-in-vm-metadata-service/
 
 - http://169.254.169.254/metadata/v1/maintenance
 
-Update Apr 2017, Azure has more support; requires the header "Metadata: true"
+Update Apr 2017, Azure has more support; requires the header "Metadata: true"<br>
 https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service
 
 - http://169.254.169.254/metadata/instance?api-version=2017-04-02
