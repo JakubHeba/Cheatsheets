@@ -1,9 +1,6 @@
-| For Change | Description |
-| --- | --- |
-| `{ENDPOINT}` | Vulnerable endpoint address |
-| `{MyServer}` | Collaborator address |
 
-`{ENDPOINT` - test
+`{ENDPOINT}` - Vulnerable endpoint address
+`{MyServer}` - Collaborator/Listener address
 
 ```html
 <html>
