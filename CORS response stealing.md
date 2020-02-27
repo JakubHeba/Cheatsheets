@@ -1,3 +1,4 @@
+```
 <html>
   <body>
   <script>history.pushState('', '', '/')</script>
@@ -21,4 +22,4 @@
     </form>
   </body>
 </html>
-
+```
