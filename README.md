@@ -2,6 +2,3 @@ I keep here my stuff about interesting and unconventional techniques for testing
 
 <b>Have fun!
   
-<i>Afine Team member.
-
-<img src=https://afine.pl/wp-content/uploads/2017/06/afine2.png>
